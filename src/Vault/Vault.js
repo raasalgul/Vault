@@ -28,26 +28,22 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Vault() {
+export default function Vault({data}) {
   const classes = useStyles();
   const [sendMoney, setSendMoney] = useState(false);
-  let req={
-      accountId:'12345',
-      balance:1.00056
-  }
   return (
       <div>
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h2">
-          Account Number: {req.accountId}
+          Account Number: {data.accountNumber}
         </Typography>
         <br/><br/>
           <TextField
           id="filled-read-only-input"
            label="Balance"
            className={classes.textField}
-          defaultValue={"₿"+req.balance}
+          defaultValue={"₿"+data.amount}
           InputProps={{
             readOnly: true,
           }}
@@ -60,13 +56,17 @@ export default function Vault() {
             alignItems: "center"
         }}>
         <Button
-        color="primary" variant="contained" size="small" onClick={()=>{setSendMoney(!sendMoney)}}>Send money</Button>
+        color="primary" variant="contained" size="small" onClick={()=>{setSendMoney(!sendMoney)}}>Money Transfer</Button>
       </CardActions>
     </Card>
     <br/><br/>
     {sendMoney?
     <Card>
-       <CardContent>
+       <CardContent style={{
+   display: "flex",
+   justifyContent: "space-between",
+   alignItems: "center",
+        }}>
        {/* <Typography variant="h6" component="h2">
           Account Number:  */}
           <TextField
@@ -79,8 +79,26 @@ export default function Vault() {
         //   }}
           variant="outlined"
         />
+          <TextField
+          id="filled-read-only-input"
+           label="Amount"
+         //  className={classes.textField}
+         // defaultValue={"₿"+req.balance}
+        //   InputProps={{
+        //     readOnly: true,
+        //   }}
+          variant="outlined"
+        />
         {/* </Typography> */}
         </CardContent> 
+        <CardActions style={{
+            display: "flex",
+            flexDirection:"column",
+            alignItems: "flex-end"
+        }}>
+        <Button
+        color="primary" variant="contained" size="small">send Money</Button>
+      </CardActions>
     </Card>
     :null}
     </div>
