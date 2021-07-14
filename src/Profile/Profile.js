@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -23,30 +21,36 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Profile() {
+export default function Profile({data}) {
   const classes = useStyles();
-  
   return (
     <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+         <CardContent>
+        <br/><br/>
+        <Typography variant="h4">
+          First Name: {data.firstName}
         </Typography>
-        <Typography variant="h5" component="h2">
-          Profile
+        <br/><br/>
+        <Typography variant="h4">
+          Last Name: {data.lastName}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
+        <br/><br/>
+        <Typography variant="h4">
+          Account No: {data.accountNumber}
         </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+        <br/><br/>
+        <Typography variant="h4">
+          Address: {data.address}
+        </Typography>
+        <br/><br/>
+        <Typography variant="h4">
+          Phone number: {data.phoneNumber}
+        </Typography>
+        <br/><br/>
+        <Typography variant="h4">
+          Email Id: {data.emailId}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
