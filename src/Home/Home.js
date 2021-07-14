@@ -56,7 +56,15 @@ export default function SimpleTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  let response = {
+    firstName:"jagan",
+    lastName:"Mohan",
+    accountNumber:"12345",
+    address:"Dubai mainroad, Dubai",
+    phoneNumber:"9999888888",
+    emailId:"test@gmail.com",
+    amount:"1.0002"
+    };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -66,10 +74,10 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Profile/>
+      <Profile data = {response}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Vault/>
+        <Vault data={response}/>
       </TabPanel>
     </div>
   );
